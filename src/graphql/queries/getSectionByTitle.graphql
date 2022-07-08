@@ -1,0 +1,5 @@
+query getSectionByTitle($title: String!) {
+  section(where: { title: $title }) {
+    content
+  }
+}

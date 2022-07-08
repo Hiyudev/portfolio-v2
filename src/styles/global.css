@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary text-primary;
+  }
+}
+
+@layer components {
+  .bg-primary {
+    @apply bg-background-100 dark:bg-background-900;
+  }
+
+  .bg-secondary {
+    @apply bg-background-200 dark:bg-background-800;
+  }
+
+  .text-primary {
+    @apply text-black dark:text-white;
+  }
+
+  .text-secondary {
+    @apply text-zinc-700 dark:text-zinc-300;
+  }
+
+  .border-primary {
+    @apply border-black dark:border-white;
+  }
+
+  .border-secondary {
+    @apply border-zinc-300 dark:border-zinc-700;
+  }
+
+  .fancy-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-8;
+  }
+
+  .fancy-ring-bg {
+    @apply focus:ring-offset-background-100 dark:focus:ring-offset-background-900;
+  }
+
+  .fancy-gradient {
+    @apply bg-gradient-to-r from-primary-500 to-secondary-500;
+  }
+}
+
+@layer utilities {
+  .animation-reverse {
+    animation-direction: reverse;
+  }
+}

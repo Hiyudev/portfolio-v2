@@ -1,0 +1,19 @@
+query getAllProjects {
+  projects {
+    description
+    githubLink
+    projectLink
+    techStack
+    title
+    slug
+    projectThumbnail {
+      url(
+        transformation: {
+          image: { resize: { width: 600, height: 300, fit: crop } }
+        }
+      )
+    }
+    projectThumbnailAlt
+    featured
+  }
+}

@@ -1,0 +1,5 @@
+query getSocialMediaByName($name: String!) {
+  socials(where: { socialMediaName: $name }) {
+    socialMediaUrl
+  }
+}

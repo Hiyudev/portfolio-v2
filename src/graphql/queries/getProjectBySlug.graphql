@@ -1,0 +1,21 @@
+query getProjectBySlug($slug: String!) {
+  project(where: { slug: $slug }) {
+    description
+    githubLink
+    projectLink
+    techStack
+    title
+    content {
+      html
+    }
+    projectThumbnail {
+      url(
+        transformation: {
+          image: { resize: { width: 1400, height: 600, fit: crop } }
+        }
+      )
+    }
+    projectThumbnailAlt
+    featured
+  }
+}
