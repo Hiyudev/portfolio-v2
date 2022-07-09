@@ -1,3 +1,8 @@
 {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "todo-tree.filtering.useBuiltInExcludes": "none",
+    "files.exclude": {
+        "**/.next": true,
+        "**/node_modules": true
+    }
 }

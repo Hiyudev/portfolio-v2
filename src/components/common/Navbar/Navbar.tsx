@@ -1,5 +1,4 @@
 import * as Popover from "@radix-ui/react-popover";
-import Link from "next/link";
 import { List } from "phosphor-react";
 import Logo from "../../icon/Logo";
 import LinkList from "./LinkList";

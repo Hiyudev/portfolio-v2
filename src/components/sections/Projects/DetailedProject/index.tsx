@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowSquareOut, GithubLogo } from "phosphor-react";
@@ -8,6 +9,8 @@ interface ProjectProps {
 }
 
 function DetailedProject({ projectData }: ProjectProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="bg-primary border-secondary z-10 grid grid-rows-2 gap-3 rounded-md border p-3 shadow-lg sm:gap-4 sm:p-4 md:grid-cols-2 md:grid-rows-1 md:gap-5 md:p-5 md:shadow-none">
       <div className="relative">
@@ -32,11 +35,13 @@ function DetailedProject({ projectData }: ProjectProps) {
           </div>
           <Link passHref href={`/project/${projectData.slug}`}>
             <a
-              aria-label={`Learn more about the ${projectData.title} project.`}
+              aria-label={`${t("project.label.partOne")} ${
+                projectData.title
+              } ${t("project.label.partTwo")}.`}
               className="fancy-ring fancy-ring-bg group mt-4 flex items-center gap-2 rounded-md"
             >
               <span className="group-hover:text-primary-500 group-focus:text-primary-500">
-                <b>Learn more</b>
+                <b>{t("project.learnMore")}</b>
               </span>
               <ArrowRight
                 aria-hidden="true"

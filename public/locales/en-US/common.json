@@ -1,0 +1,26 @@
+{
+  "navbar": {
+    "home": "Início",
+    "projects": "Projects",
+    "blogs": "Blogs"
+  },
+  "footer": {
+    "description": "Crafting scalable and accessible products",
+    "socialLinksSR": "Social media links",
+    "created": "Created with",
+    "love": "love",
+    "and": "and",
+    "code": "code",
+    "by": "by"
+  },
+  "hero": {
+    "socialMediaText": "Find me on these social media"
+  },
+  "project": {
+    "learnMore": "Learn more",
+    "label": {
+      "partOne": "Learn more about the",
+      "partTwo": "project"
+    }
+  }
+}

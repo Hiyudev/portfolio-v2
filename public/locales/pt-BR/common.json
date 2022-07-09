@@ -1,0 +1,26 @@
+{
+  "navbar": {
+    "home": "Início",
+    "projects": "Projetos",
+    "blogs": "Blogs"
+  },
+  "footer": {
+    "description": "Crio e desenho programas rápidos e acessíveis",
+    "socialLinksSR": "Links das redes sociais",
+    "created": "Criado com",
+    "love": "amor",
+    "and": "e",
+    "code": "código",
+    "by": "por"
+  },
+  "hero": {
+    "socialMediaText": "Me encontre nas seguintes redes sociais"
+  },
+  "project": {
+    "learnMore": "Saiba mais",
+    "label": {
+      "partOne": "Saiba mais sobre o projeto",
+      "partTwo": ""
+    }
+  }
+}

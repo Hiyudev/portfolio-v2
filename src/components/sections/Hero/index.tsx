@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SocialList } from "../../common/Footer";
 import Link from "next/link";
+import { useTranslation } from "next-i18next";
 
 interface HeroSectionProps {
   tags: string;
@@ -8,6 +9,8 @@ interface HeroSectionProps {
 }
 
 function HeroSection({ tags, description }: HeroSectionProps) {
+  const {t} = useTranslation();
+
   return (
     <section className="mt-8 grid grid-rows-2 md:grid-cols-2 md:grid-rows-none">
       <div>
@@ -22,7 +25,7 @@ function HeroSection({ tags, description }: HeroSectionProps) {
         <p className="mt-4 sm:text-lg md:text-xl">{description}</p>
 
         <div className="mt-8">
-          <p className="text-secondary">Find me on</p>
+          <p className="text-secondary">{t("hero.socialMediaText")}</p>
           <ul className="mt-4 flex gap-4">
             {Object.entries(SocialList).map(([key, value], index) => {
               return (

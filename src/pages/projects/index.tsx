@@ -5,7 +5,7 @@ import {
   GetAllProjectsDocument,
   useGetAllProjectsQuery,
 } from "../../graphql/generated/graphql";
-import GraphCMSCLient, { ssrCache } from "../../lib/urql";
+import createGraphCMSClient, { ssrCache } from "../../lib/urql";
 
 const Footer = dynamic(() => import("../../components/common/Footer"));
 const Layout = dynamic(() => import("../../components/layout"));
@@ -30,8 +30,10 @@ const ProjectsPage = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  await GraphCMSCLient.query(GetAllProjectsDocument).toPromise();
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const lang = locale.replace("-", "");
+  const client = createGraphCMSClient(lang);
+  await client.query(GetAllProjectsDocument).toPromise();
 
   return {
     props: {

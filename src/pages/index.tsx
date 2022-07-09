@@ -2,6 +2,7 @@ import { GetStaticProps } from "next";
 import { withUrqlClient } from "next-urql";
 import dynamic from "next/dynamic";
 import BlogsSection from "../components/sections/Blog";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const HeroSection = dynamic(() => import("../components/sections/Hero"));
 const Footer = dynamic(() => import("../components/common/Footer"));
@@ -20,7 +21,7 @@ import {
   useGetAllProjectsQuery,
   useGetSectionByTitleQuery,
 } from "../graphql/generated/graphql";
-import GraphCMSCLient, { ssrCache } from "../lib/urql";
+import createGraphCMSClient, { ssrCache } from "../lib/urql";
 
 const HomePage = () => {
   const [{ data: HeroDescription }] = useGetSectionByTitleQuery({
@@ -68,23 +69,33 @@ const HomePage = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const lang = locale.replace("-", "");
+  const client = createGraphCMSClient(lang);
+
   await Promise.all([
-    GraphCMSCLient.query(GetSectionByTitleDocument, {
-      title: "HeroDescription",
-    }).toPromise(),
-    GraphCMSCLient.query(GetSectionByTitleDocument, {
-      title: "ProjectsDescription",
-    }).toPromise(),
-    GraphCMSCLient.query(GetSectionByTitleDocument, {
-      title: "ContactsDescription",
-    }).toPromise(),
-    GraphCMSCLient.query(GetAllProjectsDocument).toPromise(),
+    client
+      .query(GetSectionByTitleDocument, {
+        title: "HeroDescription",
+      })
+      .toPromise(),
+    client
+      .query(GetSectionByTitleDocument, {
+        title: "ProjectsDescription",
+      })
+      .toPromise(),
+    client
+      .query(GetSectionByTitleDocument, {
+        title: "ContactsDescription",
+      })
+      .toPromise(),
+    client.query(GetAllProjectsDocument).toPromise(),
   ]);
 
   return {
     props: {
       urqlState: ssrCache.extractData(),
+      ...(await serverSideTranslations(locale, ["common"])),
     },
     revalidate: 86400,
   };

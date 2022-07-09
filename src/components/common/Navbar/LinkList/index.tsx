@@ -1,5 +1,7 @@
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 import { ShareNetwork, Article, House } from "phosphor-react";
+import { useMemo } from "react";
 
 export const websiteHomeSections = {
   HOME: {
@@ -24,7 +26,7 @@ export const websiteHomeSections = {
   },
   BLOGS: {
     label: {
-      value: "blog",
+      value: "blogs",
       description: "view blog articles",
     },
     link: "/#blogs",
@@ -35,9 +37,12 @@ export const websiteHomeSections = {
 };
 
 function LinkList() {
-  return (
-    <>
-      {Object.entries(websiteHomeSections).map(([key, value]) => (
+  const { t } = useTranslation();
+
+  const NavLinkList = useMemo(() => {
+    return Object.entries(websiteHomeSections).map(([key, value]) => {
+      const label = t(`navbar.${value.label.value}`);
+      return (
         <li key={key}>
           <Link href={value.link} passHref>
             <a
@@ -47,15 +52,15 @@ function LinkList() {
               <div className="group-hover:text-primary-500 group-hover:transition-colors group-focus:text-primary-500">
                 {value.image.source}
               </div>
-              <span className="first-letter:uppercase">
-                {value.label.value}
-              </span>
+              <span className="first-letter:uppercase">{label}</span>
             </a>
           </Link>
         </li>
-      ))}
-    </>
-  );
+      );
+    });
+  }, [t]);
+
+  return <>{NavLinkList}</>;
 }
 
 export default LinkList;
