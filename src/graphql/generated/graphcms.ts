@@ -13,18 +13,13 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** A date string, such as 2007-12-03 (YYYY-MM-DD), compliant with ISO 8601 standard for representation of dates using the Gregorian calendar. */
   Date: any;
-  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the date-timeformat outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representationof dates and times using the Gregorian calendar. */
   DateTime: any;
   Hex: any;
-  /** Raw JSON value */
   Json: any;
-  /** The Long scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1. */
   Long: any;
   RGBAHue: any;
   RGBATransparency: any;
-  /** Slate-compatible RichText AST */
   RichTextAST: any;
 };
 
@@ -806,8 +801,8 @@ export type ImageTransformationInput = {
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
-  En = 'en',
-  PtBr = 'pt_BR'
+  EnUs = 'enUS',
+  PtBr = 'ptBR'
 }
 
 /** Representing a geolocation point with latitude and longitude */
@@ -1720,10 +1715,10 @@ export type ProjectConnection = {
 };
 
 export type ProjectCreateInput = {
-  /** content input for default locale (en) */
+  /** content input for default locale (enUS) */
   content?: InputMaybe<Scalars['RichTextAST']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** description input for default locale (en) */
+  /** description input for default locale (enUS) */
   description?: InputMaybe<Scalars['String']>;
   featured: Scalars['Boolean'];
   githubLink?: InputMaybe<Scalars['String']>;
@@ -1731,7 +1726,7 @@ export type ProjectCreateInput = {
   localizations?: InputMaybe<ProjectCreateLocalizationsInput>;
   projectLink?: InputMaybe<Scalars['String']>;
   projectThumbnail?: InputMaybe<AssetCreateOneInlineInput>;
-  /** projectThumbnailAlt input for default locale (en) */
+  /** projectThumbnailAlt input for default locale (enUS) */
   projectThumbnailAlt?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   techStack?: InputMaybe<Array<Scalars['String']>>;
@@ -1981,9 +1976,9 @@ export enum ProjectOrderByInput {
 }
 
 export type ProjectUpdateInput = {
-  /** content input for default locale (en) */
+  /** content input for default locale (enUS) */
   content?: InputMaybe<Scalars['RichTextAST']>;
-  /** description input for default locale (en) */
+  /** description input for default locale (enUS) */
   description?: InputMaybe<Scalars['String']>;
   featured?: InputMaybe<Scalars['Boolean']>;
   githubLink?: InputMaybe<Scalars['String']>;
@@ -1991,7 +1986,7 @@ export type ProjectUpdateInput = {
   localizations?: InputMaybe<ProjectUpdateLocalizationsInput>;
   projectLink?: InputMaybe<Scalars['String']>;
   projectThumbnail?: InputMaybe<AssetUpdateOneInlineInput>;
-  /** projectThumbnailAlt input for default locale (en) */
+  /** projectThumbnailAlt input for default locale (enUS) */
   projectThumbnailAlt?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   techStack?: InputMaybe<Array<Scalars['String']>>;
@@ -2037,14 +2032,14 @@ export type ProjectUpdateManyInlineInput = {
 };
 
 export type ProjectUpdateManyInput = {
-  /** content input for default locale (en) */
+  /** content input for default locale (enUS) */
   content?: InputMaybe<Scalars['RichTextAST']>;
-  /** description input for default locale (en) */
+  /** description input for default locale (enUS) */
   description?: InputMaybe<Scalars['String']>;
   featured?: InputMaybe<Scalars['Boolean']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<ProjectUpdateManyLocalizationsInput>;
-  /** projectThumbnailAlt input for default locale (en) */
+  /** projectThumbnailAlt input for default locale (enUS) */
   projectThumbnailAlt?: InputMaybe<Scalars['String']>;
   techStack?: InputMaybe<Array<Scalars['String']>>;
 };
@@ -3782,7 +3777,7 @@ export type SectionConnection = {
 };
 
 export type SectionCreateInput = {
-  /** content input for default locale (en) */
+  /** content input for default locale (enUS) */
   content?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** Inline mutations for managing document localizations excluding the default locale */
@@ -3948,7 +3943,7 @@ export enum SectionOrderByInput {
 }
 
 export type SectionUpdateInput = {
-  /** content input for default locale (en) */
+  /** content input for default locale (enUS) */
   content?: InputMaybe<Scalars['String']>;
   /** Manage document localizations */
   localizations?: InputMaybe<SectionUpdateLocalizationsInput>;
@@ -3992,7 +3987,7 @@ export type SectionUpdateManyInlineInput = {
 };
 
 export type SectionUpdateManyInput = {
-  /** content input for default locale (en) */
+  /** content input for default locale (enUS) */
   content?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<SectionUpdateManyLocalizationsInput>;

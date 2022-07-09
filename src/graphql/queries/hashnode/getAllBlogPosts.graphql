@@ -1,0 +1,12 @@
+query GetAllBlogPosts {
+  user(username: "Hiyudev") {
+    publication {
+      posts {
+        title
+        brief
+        slug
+        coverImage
+      }
+    }
+  }
+}

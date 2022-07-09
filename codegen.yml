@@ -1,17 +1,28 @@
 overwrite: true
 
-schema: ${NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL}
-
-documents: "./src/graphql/**/*.graphql"
-
 generates:
-  src/graphql/generated/graphql.ts:
+  src/graphql/generated/graphcms.ts:
+    documents: "./src/graphql/queries/graphCMS/**/*.graphql"
+    schema: ${NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL}
     plugins:
       - "typescript"
       - "typescript-operations"
       - "typescript-urql"
     config:
       withHooks: true
+      withHOC: false
+      withComponent: false
+  src/graphql/generated/hashnode.ts:
+    documents: "./src/graphql/queries/hashnode/**/*.graphql"
+    schema: ${NEXT_PUBLIC_HASHNODE_SCHEMA_URL}
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-urql"
+    config:
+      withHooks: true
+      withHOC: false
+      withComponent: false
 
 hooks:
   afterAllFileWrite:

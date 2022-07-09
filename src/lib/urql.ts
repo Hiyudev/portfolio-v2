@@ -3,7 +3,7 @@ import { ssrExchange, dedupExchange, cacheExchange, fetchExchange, Client } from
 
 export const ssrCache = ssrExchange({ isClient: false });
 
-const createGraphCMSClient = (locale: string = "en_US"): Client => {
+export const createGraphCMSClient = (locale: string = "en_US"): Client => {
   return initUrqlClient(
     {
       url: process.env.NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL,
@@ -20,4 +20,12 @@ const createGraphCMSClient = (locale: string = "en_US"): Client => {
   );
 }
 
-export default createGraphCMSClient;
+export const createHashnodeClient = (): Client => {
+  return initUrqlClient(
+    {
+      url: process.env.NEXT_PUBLIC_HASHNODE_SCHEMA_URL,
+      exchanges: [dedupExchange, cacheExchange, ssrCache, fetchExchange],
+    },
+    false
+  );
+}
