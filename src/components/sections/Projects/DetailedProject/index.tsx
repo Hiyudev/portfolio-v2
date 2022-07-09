@@ -25,7 +25,7 @@ function DetailedProject({ projectData }: ProjectProps) {
           />
         )}
       </div>
-      <div className="flex flex-col justify-between rounded-b-md md:rounded-t-md md:shadow-lg">
+      <div className="flex flex-col justify-between">
         <div className="flex h-full flex-col justify-between">
           <div className="space-y-4">
             <h3 className="text-2xl font-black sm:text-3xl md:text-4xl">
