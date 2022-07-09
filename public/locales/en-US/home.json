@@ -1,0 +1,10 @@
+{
+  "titles": {
+    "projects": "Projects",
+    "blog": "Blog posts",
+    "contact": "Contact me"
+  },
+  "hero": {
+    "socialMediaText": "Find me on these social media"
+  }
+}

@@ -1,3 +1,4 @@
+import { useTranslation } from "next-i18next";
 import { GetAllProjectsQuery } from "../../../graphql/generated/graphql";
 import Title from "../../common/Title";
 import DetailedProject from "./DetailedProject";
@@ -8,9 +9,11 @@ interface ProjectsSectionProps {
 }
 
 function ProjectsSection({ projectsData, description }: ProjectsSectionProps) {
+  const { t } = useTranslation("home");
+
   return (
     <section id="projects" className="mt-8 md:mt-16">
-      <Title>Projects</Title>
+      <Title>{t("titles.projects")}</Title>
       {description && (
         <p className="text-secondary mt-4 sm:text-lg md:text-xl">
           {description}

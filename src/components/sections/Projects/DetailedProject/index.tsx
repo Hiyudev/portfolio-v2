@@ -9,7 +9,7 @@ interface ProjectProps {
 }
 
 function DetailedProject({ projectData }: ProjectProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("project");
 
   return (
     <div className="bg-primary border-secondary z-10 grid grid-rows-2 gap-3 rounded-md border p-3 shadow-lg sm:gap-4 sm:p-4 md:grid-cols-2 md:grid-rows-1 md:gap-5 md:p-5 md:shadow-none">
@@ -35,13 +35,13 @@ function DetailedProject({ projectData }: ProjectProps) {
           </div>
           <Link passHref href={`/project/${projectData.slug}`}>
             <a
-              aria-label={`${t("project.label.partOne")} ${
+              aria-label={`${t("datailedProject.label.partOne")} ${
                 projectData.title
-              } ${t("project.label.partTwo")}.`}
+              } ${t("datailedProject.label.partTwo")}.`}
               className="fancy-ring fancy-ring-bg group mt-4 flex items-center gap-2 rounded-md"
             >
               <span className="group-hover:text-primary-500 group-focus:text-primary-500">
-                <b>{t("project.learnMore")}</b>
+                <b>{t("datailedProject.learnMore")}</b>
               </span>
               <ArrowRight
                 aria-hidden="true"

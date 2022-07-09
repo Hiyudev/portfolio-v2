@@ -1,3 +1,10 @@
 {
-  "techDescription": "Made with these technologies:"
+  "techDescription": "Made with these technologies:",
+  "detailedProject": {
+    "learnMore": "Learn more",
+    "label": {
+      "partOne": "Learn more about the",
+      "partTwo": "project"
+    }
+  }
 }

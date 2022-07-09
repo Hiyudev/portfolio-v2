@@ -1,3 +1,10 @@
 {
-  "techDescription": "Feito com as seguintes tecnologias:"
+  "techDescription": "Feito com as seguintes tecnologias:",
+  "datailedProject": {
+    "learnMore": "Saiba mais",
+    "label": {
+      "partOne": "Saiba mais sobre o projeto",
+      "partTwo": ""
+    }
+  }
 }

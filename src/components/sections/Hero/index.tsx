@@ -9,7 +9,7 @@ interface HeroSectionProps {
 }
 
 function HeroSection({ tags, description }: HeroSectionProps) {
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
 
   return (
     <section className="mt-8 grid grid-rows-2 md:grid-cols-2 md:grid-rows-none">

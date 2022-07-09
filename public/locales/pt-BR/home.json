@@ -1,0 +1,10 @@
+{
+  "titles": {
+    "projects": "Projetos",
+    "blog": "Meu blog",
+    "contact": "Entre em contato"
+  },
+  "hero": {
+    "socialMediaText": "Me encontre nas seguintes redes sociais"
+  }
+}

@@ -95,7 +95,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
       urqlState: ssrCache.extractData(),
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(locale, ["common", "home", "project"])),
     },
     revalidate: 86400,
   };
