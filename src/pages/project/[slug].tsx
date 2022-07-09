@@ -21,7 +21,7 @@ const ProjectPage = ({ slug }: ProjectPageProps) => {
     variables: { slug },
   });
 
-  const { t } = useTranslation();
+  const { t } = useTranslation("project");
 
   return (
     <>
@@ -46,7 +46,7 @@ const ProjectPage = ({ slug }: ProjectPageProps) => {
           </p>
 
           <div className="text-secondary mt-4 text-center">
-            <p>{t("labelTechnologies")}</p>
+            <p>{t("techDescription")}</p>
             <ul className="mt-4 flex flex-col justify-center gap-4 sm:flex-row">
               {ProjectData.project.techStack.map((stack, index) => {
                 return (
@@ -62,7 +62,7 @@ const ProjectPage = ({ slug }: ProjectPageProps) => {
           </div>
 
           <article
-            className="prose prose-zinc mt-12 dark:prose-invert lg:prose-xl"
+            className="prose prose-zinc mt-12 max-w-none prose-a:underline-offset-2 prose-a:transition-colors hover:prose-a:text-primary-500 dark:prose-invert lg:prose-lg"
             dangerouslySetInnerHTML={{
               __html: ProjectData.project.content.html,
             }}
