@@ -9,7 +9,7 @@ interface HeroSectionProps {
 }
 
 function HeroSection({ tags, description }: HeroSectionProps) {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <section className="mt-8 grid grid-rows-2 md:grid-cols-2 md:grid-rows-none">
@@ -18,9 +18,9 @@ function HeroSection({ tags, description }: HeroSectionProps) {
           Kevin
         </h1>
 
-        <ul className="text-secondary mt-4 flex flex-row gap-8 sm:text-lg md:text-xl">
+        <div className="text-secondary mt-4 flex flex-row gap-8 sm:text-lg md:text-xl">
           {tags}
-        </ul>
+        </div>
 
         <p className="mt-4 sm:text-lg md:text-xl">{description}</p>
 
