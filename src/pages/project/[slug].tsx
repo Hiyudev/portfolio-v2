@@ -81,8 +81,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const slug = params?.slug as string;
 
-  const GLanguage = locale.replace("-", "");
-  const GClient = initGraphClient(GLanguage);
+  const GClient = initGraphClient(locale);
 
   const { project } = await GClient.request(GetProjectBySlugDocument, { slug });
 

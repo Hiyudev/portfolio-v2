@@ -35,8 +35,7 @@ const ProjectsPage = ({ ProjectsData }: ProjectsPageProps) => {
 export default ProjectsPage;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const GLanguage = locale.replace("-", "");
-  const GClient = initGraphClient(GLanguage);
+  const GClient = initGraphClient(locale);
 
   const { projects: ProjectsData } = await GClient.request(
     GetAllProjectsDocument
