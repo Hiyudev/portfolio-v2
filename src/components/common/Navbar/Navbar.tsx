@@ -1,4 +1,5 @@
 import * as Popover from "@radix-ui/react-popover";
+import Link from "next/link";
 import { List } from "phosphor-react";
 import Logo from "../../icon/Logo";
 import LinkList from "./LinkList";
@@ -7,9 +8,11 @@ import ThemeSwitcher from "./ThemeSwitcher";
 function Navbar() {
   return (
     <nav className="bg-primary fixed top-0 z-50 flex w-full flex-row items-center justify-between p-5 sm:px-10 md:px-12 lg:px-24 xl:px-48">
-      <div className="fancy-ring fancy-ring-bg rounded-md">
-        <Logo />
-      </div>
+      <Link href="/" passHref>
+        <a className="fancy-ring fancy-ring-bg rounded-md">
+          <Logo />
+        </a>
+      </Link>
 
       <div className="flex gap-8">
         <Popover.Root>
