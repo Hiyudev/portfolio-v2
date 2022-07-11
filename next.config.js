@@ -8,14 +8,15 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: "/social/:name",
-        destination: "/api/social/:name",
-        permanent: true,
-      },
-      {
         source: "/blog/:slug",
         destination: "https://hiyu.hashnode.dev/:slug",
         permanent: true,
+      },
+      {
+        source: "/:locale/social/:name",
+        destination: "/api/social/:name",
+        permanent: true,
+        locale: false,
       },
     ];
   },
