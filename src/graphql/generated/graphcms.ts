@@ -1,11 +1,11 @@
+import { GraphQLClient } from 'graphql-request';
+import * as Dom from 'graphql-request/dist/types.dom';
 import gql from 'graphql-tag';
-import * as Urql from 'urql';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -5107,6 +5107,11 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization'
 }
 
+export type GetAllFeaturedProjectsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllFeaturedProjectsQuery = { __typename?: 'Query', projects: Array<{ __typename?: 'Project', description?: string | null, githubLink?: string | null, projectLink?: string | null, techStack: Array<string>, title?: string | null, slug?: string | null, projectThumbnailAlt?: string | null, featured: boolean, projectThumbnail?: { __typename?: 'Asset', url: string } | null }> };
+
 export type GetAllProjectsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -5134,6 +5139,23 @@ export type GetSocialMediaByNameQueryVariables = Exact<{
 export type GetSocialMediaByNameQuery = { __typename?: 'Query', socials: Array<{ __typename?: 'Social', socialMediaUrl?: string | null }> };
 
 
+export const GetAllFeaturedProjectsDocument = gql`
+    query getAllFeaturedProjects {
+  projects(where: {featured: true}) {
+    description
+    githubLink
+    projectLink
+    techStack
+    title
+    slug
+    projectThumbnail {
+      url(transformation: {image: {resize: {width: 600, height: 300, fit: crop}}})
+    }
+    projectThumbnailAlt
+    featured
+  }
+}
+    `;
 export const GetAllProjectsDocument = gql`
     query getAllProjects {
   projects {
@@ -5151,10 +5173,6 @@ export const GetAllProjectsDocument = gql`
   }
 }
     `;
-
-export function useGetAllProjectsQuery(options?: Omit<Urql.UseQueryArgs<GetAllProjectsQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetAllProjectsQuery>({ query: GetAllProjectsDocument, ...options });
-};
 export const GetProjectBySlugDocument = gql`
     query getProjectBySlug($slug: String!) {
   project(where: {slug: $slug}) {
@@ -5174,10 +5192,6 @@ export const GetProjectBySlugDocument = gql`
   }
 }
     `;
-
-export function useGetProjectBySlugQuery(options: Omit<Urql.UseQueryArgs<GetProjectBySlugQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetProjectBySlugQuery>({ query: GetProjectBySlugDocument, ...options });
-};
 export const GetSectionByTitleDocument = gql`
     query getSectionByTitle($title: String!) {
   section(where: {title: $title}) {
@@ -5185,10 +5199,6 @@ export const GetSectionByTitleDocument = gql`
   }
 }
     `;
-
-export function useGetSectionByTitleQuery(options: Omit<Urql.UseQueryArgs<GetSectionByTitleQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetSectionByTitleQuery>({ query: GetSectionByTitleDocument, ...options });
-};
 export const GetSocialMediaByNameDocument = gql`
     query getSocialMediaByName($name: String!) {
   socials(where: {socialMediaName: $name}) {
@@ -5197,6 +5207,28 @@ export const GetSocialMediaByNameDocument = gql`
 }
     `;
 
-export function useGetSocialMediaByNameQuery(options: Omit<Urql.UseQueryArgs<GetSocialMediaByNameQueryVariables>, 'query'>) {
-  return Urql.useQuery<GetSocialMediaByNameQuery>({ query: GetSocialMediaByNameDocument, ...options });
-};
+export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
+
+
+const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action();
+
+export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
+  return {
+    getAllFeaturedProjects(variables?: GetAllFeaturedProjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllFeaturedProjectsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllFeaturedProjectsQuery>(GetAllFeaturedProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllFeaturedProjects', 'query');
+    },
+    getAllProjects(variables?: GetAllProjectsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetAllProjectsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetAllProjectsQuery>(GetAllProjectsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getAllProjects', 'query');
+    },
+    getProjectBySlug(variables: GetProjectBySlugQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetProjectBySlugQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetProjectBySlugQuery>(GetProjectBySlugDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getProjectBySlug', 'query');
+    },
+    getSectionByTitle(variables: GetSectionByTitleQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetSectionByTitleQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetSectionByTitleQuery>(GetSectionByTitleDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getSectionByTitle', 'query');
+    },
+    getSocialMediaByName(variables: GetSocialMediaByNameQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GetSocialMediaByNameQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<GetSocialMediaByNameQuery>(GetSocialMediaByNameDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'getSocialMediaByName', 'query');
+    }
+  };
+}
+export type Sdk = ReturnType<typeof getSdk>;

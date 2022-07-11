@@ -5,10 +5,11 @@ generates:
     documents: "./src/graphql/queries/graphCMS/**/*.graphql"
     schema: ${NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL}
     plugins:
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-urql"
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
     config:
+      reactApolloVersion: 3
       withHooks: true
       withHOC: false
       withComponent: false
@@ -16,10 +17,11 @@ generates:
     documents: "./src/graphql/queries/hashnode/**/*.graphql"
     schema: ${NEXT_PUBLIC_HASHNODE_SCHEMA_URL}
     plugins:
-      - "typescript"
-      - "typescript-operations"
-      - "typescript-urql"
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
     config:
+      reactApolloVersion: 3
       withHooks: true
       withHOC: false
       withComponent: false

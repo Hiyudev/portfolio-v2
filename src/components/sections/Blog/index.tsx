@@ -1,7 +1,13 @@
 import { useTranslation } from "next-i18next";
+import { Post } from "../../../graphql/generated/hashnode";
 import Title from "../../common/Title";
+import BlogPost from "./BlogPost";
 
-function BlogsSection() {
+interface BlogSectionProps {
+  blogPosts: Post[];
+}
+
+function BlogsSection({ blogPosts }) {
   const { t } = useTranslation("home");
 
   return (
@@ -11,7 +17,17 @@ function BlogsSection() {
     >
       <div className="space-y-4">
         <Title>{t("titles.blog")}</Title>
-        <p className="text-secondary">Pog</p>
+        <ul>
+          {blogPosts.map((post, index) => (
+            <BlogPost
+              key={index}
+              title={post.title}
+              description={post.brief}
+              coverImageUrl={post.coverImage}
+              href={`/blog/${post.slug}`}
+            />
+          ))}
+        </ul>
       </div>
     </section>
   );

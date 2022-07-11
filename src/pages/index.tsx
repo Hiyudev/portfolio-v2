@@ -1,8 +1,15 @@
-import { GetStaticProps } from "next";
-import { withUrqlClient } from "next-urql";
+import { GetStaticProps } from "next/types";
 import dynamic from "next/dynamic";
 import BlogsSection from "../components/sections/Blog";
+import {
+  GetAllFeaturedProjectsDocument,
+  GetAllProjectsDocument,
+  GetSectionByTitleDocument,
+  Project,
+} from "../graphql/generated/graphcms";
+import { initGraphClient, initHashClient } from "../lib/client";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetAllBlogPostsDocument, Post } from "../graphql/generated/hashnode";
 
 const HeroSection = dynamic(() => import("../components/sections/Hero"));
 const Footer = dynamic(() => import("../components/common/Footer"));
@@ -15,53 +22,40 @@ const ProjectsSection = dynamic(
   () => import("../components/sections/Projects")
 );
 
-import {
-  GetAllProjectsDocument,
-  GetSectionByTitleDocument,
-  useGetAllProjectsQuery,
-  useGetSectionByTitleQuery,
-} from "../graphql/generated/graphql";
-import createGraphCMSClient, { ssrCache } from "../lib/urql";
+interface HomePageProps {
+  HeroTags: string;
+  HeroDescription: string;
+  ProjectsDescription: string;
+  FeaturedProjectsData: Project[];
+  ContactsDescription: string;
+  BlogPosts: Post[];
+}
 
-const HomePage = () => {
-  const [{ data: HeroDescription }] = useGetSectionByTitleQuery({
-    variables: { title: "HeroDescription" },
-  });
-  const [{ data: HeroTags }] = useGetSectionByTitleQuery({
-    variables: { title: "HeroTags" },
-  });
-
-  const [{ data: ProjectsDescription }] = useGetSectionByTitleQuery({
-    variables: { title: "ProjectsDescription" },
-  });
-
-  const [{ data: ContactsDescription }] = useGetSectionByTitleQuery({
-    variables: { title: "ContactsDescription" },
-  });
-
-  const [{ data: ProjectsData }] = useGetAllProjectsQuery();
-
+const HomePage = ({
+  HeroTags,
+  HeroDescription,
+  ProjectsDescription,
+  FeaturedProjectsData,
+  ContactsDescription,
+  BlogPosts,
+}: HomePageProps) => {
   return (
     <>
       <Navbar />
       <Layout className="mt-20">
         <HeroSection
-          tags={HeroTags?.section.content ?? ""}
-          description={HeroDescription?.section?.content ?? ""}
+          tags={HeroTags ?? ""}
+          description={HeroDescription ?? ""}
         />
 
         <ProjectsSection
-          description={ProjectsDescription?.section?.content ?? ""}
-          projectsData={
-            ProjectsData?.projects.filter((project) => project.featured) ?? []
-          }
+          description={ProjectsDescription ?? ""}
+          projectsData={FeaturedProjectsData ?? []}
         />
 
-        <BlogsSection />
+        <BlogsSection blogPosts={BlogPosts ?? []} />
 
-        <ContactsSection
-          description={ContactsDescription?.section?.content ?? ""}
-        />
+        <ContactsSection description={ContactsDescription ?? ""} />
       </Layout>
 
       <Footer />
@@ -69,41 +63,58 @@ const HomePage = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const lang = locale.replace("-", "");
-  const client = createGraphCMSClient(lang);
+export default HomePage;
 
-  await Promise.all([
-    client
-      .query(GetSectionByTitleDocument, {
-        title: "HeroDescription",
-      })
-      .toPromise(),
-    client
-      .query(GetSectionByTitleDocument, {
-        title: "ProjectsDescription",
-      })
-      .toPromise(),
-    client
-      .query(GetSectionByTitleDocument, {
-        title: "ContactsDescription",
-      })
-      .toPromise(),
-    client.query(GetAllProjectsDocument).toPromise(),
-  ]);
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const GLanguage = locale.replace("-", "");
+  const GClient = initGraphClient(GLanguage);
+
+  const {
+    section: { content: HeroTags },
+  } = await GClient.request(GetSectionByTitleDocument, {
+    title: "HeroTags",
+  });
+
+  const {
+    section: { content: HeroDescription },
+  } = await GClient.request(GetSectionByTitleDocument, {
+    title: "HeroDescription",
+  });
+
+  const {
+    section: { content: ProjectsDescription },
+  } = await GClient.request(GetSectionByTitleDocument, {
+    title: "ProjectsDescription",
+  });
+
+  const {
+    section: { content: ContactsDescription },
+  } = await GClient.request(GetSectionByTitleDocument, {
+    title: "ContactsDescription",
+  });
+
+  const { projects: FeaturedProjectsData } = await GClient.request(
+    GetAllFeaturedProjectsDocument
+  );
+
+  const HClient = initHashClient();
+
+  const {
+    user: {
+      publication: { posts: BlogPosts },
+    },
+  } = await HClient.request(GetAllBlogPostsDocument);
 
   return {
     props: {
-      urqlState: ssrCache.extractData(),
+      HeroTags,
+      HeroDescription,
+      ProjectsDescription,
+      FeaturedProjectsData,
+      ContactsDescription,
+      BlogPosts,
       ...(await serverSideTranslations(locale, ["common", "home", "project"])),
     },
     revalidate: 86400,
   };
 };
-
-export default withUrqlClient(
-  (ssr) => ({
-    url: process.env.NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL,
-  }),
-  { ssr: false }
-)(HomePage);

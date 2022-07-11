@@ -12,6 +12,11 @@ module.exports = {
         destination: "/api/social/:name",
         permanent: true,
       },
+      {
+        source: "/blog/:slug",
+        destination: "https://hiyu.hashnode.dev/:slug",
+        permanent: true,
+      },
     ];
   },
 };

@@ -9,29 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.3",
-    "@icons-pack/react-simple-icons": "^4.7.0",
+    "@apollo/client": "^3.6.9",
     "@radix-ui/react-popover": "^0.1.6",
     "dotenv": "^16.0.1",
     "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
     "next": "latest",
     "next-i18next": "^11.0.0",
     "next-seo": "^5.4.0",
     "next-themes": "^0.2.0",
-    "next-urql": "^3.3.3",
     "phosphor-react": "^1.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^18.2.0",
-    "sharp": "^0.30.6",
-    "urql": "^2.2.2"
+    "sharp": "^0.30.6"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.6.2",
-    "@graphql-codegen/import-types-preset": "^2.1.18",
     "@graphql-codegen/typescript": "^2.4.11",
+    "@graphql-codegen/typescript-graphql-request": "^4.5.1",
     "@graphql-codegen/typescript-operations": "^2.4.0",
-    "@graphql-codegen/typescript-urql": "^3.5.10",
     "@tailwindcss/typography": "^0.5.2",
     "@types/node": "^12.12.21",
     "@types/react": "^18.0.15",

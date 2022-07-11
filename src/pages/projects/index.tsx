@@ -1,11 +1,11 @@
-import { GetStaticProps } from "next";
-import { withUrqlClient } from "next-urql";
+import { GetStaticProps } from "next/types";
 import dynamic from "next/dynamic";
+import { initGraphClient } from "../../lib/client";
 import {
   GetAllProjectsDocument,
-  useGetAllProjectsQuery,
-} from "../../graphql/generated/graphql";
-import createGraphCMSClient, { ssrCache } from "../../lib/urql";
+  Project,
+} from "../../graphql/generated/graphcms";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 const Footer = dynamic(() => import("../../components/common/Footer"));
 const Layout = dynamic(() => import("../../components/layout"));
@@ -15,14 +15,16 @@ const ProjectsSection = dynamic(
   () => import("../../components/sections/Projects")
 );
 
-const ProjectsPage = () => {
-  const [{ data: ProjectsData }] = useGetAllProjectsQuery();
+interface ProjectsPageProps {
+  ProjectsData: Project[];
+}
 
+const ProjectsPage = ({ ProjectsData }: ProjectsPageProps) => {
   return (
     <>
       <Navbar />
       <Layout className="mt-20">
-        <ProjectsSection projectsData={ProjectsData?.projects ?? []} />
+        <ProjectsSection projectsData={ProjectsData ?? []} />
       </Layout>
 
       <Footer />
@@ -30,22 +32,20 @@ const ProjectsPage = () => {
   );
 };
 
+export default ProjectsPage;
+
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const lang = locale.replace("-", "");
-  const client = createGraphCMSClient(lang);
-  await client.query(GetAllProjectsDocument).toPromise();
+  const GLanguage = locale.replace("-", "");
+  const GClient = initGraphClient(GLanguage);
+
+  const { projects: ProjectsData } = await GClient.request(
+    GetAllProjectsDocument
+  );
 
   return {
     props: {
-      urqlState: ssrCache.extractData(),
+      ProjectsData,
+      ...(await serverSideTranslations(locale, ["common", "home", "project"])),
     },
-    revalidate: 86400,
   };
 };
-
-export default withUrqlClient(
-  (ssr) => ({
-    url: process.env.NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL,
-  }),
-  { ssr: false }
-)(ProjectsPage);

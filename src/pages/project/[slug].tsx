@@ -1,4 +1,3 @@
-import { withUrqlClient } from "next-urql";
 import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next/types";
 import Footer from "../../components/common/Footer";
@@ -6,49 +5,45 @@ import Navbar from "../../components/common/Navbar";
 import Layout from "../../components/layout";
 import {
   GetProjectBySlugDocument,
-  useGetProjectBySlugQuery,
-} from "../../graphql/generated/graphql";
-import createGraphCMSClient, { ssrCache } from "../../lib/urql";
+  Project,
+} from "../../graphql/generated/graphcms";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { initGraphClient } from "../../lib/client";
 
 interface ProjectPageProps {
-  slug: string;
+  projectData: Project;
 }
 
-const ProjectPage = ({ slug }: ProjectPageProps) => {
-  const [{ data: ProjectData }] = useGetProjectBySlugQuery({
-    variables: { slug },
-  });
-
+const ProjectPage = ({ projectData }: ProjectPageProps) => {
   const { t } = useTranslation("project");
 
   return (
     <>
       <Navbar />
       <section className="mt-20">
-        {ProjectData.project?.projectThumbnail && (
+        {projectData.projectThumbnail && (
           <Image
             objectFit="cover"
             height={600}
             width={1400}
-            src={ProjectData.project?.projectThumbnail?.url ?? ""}
-            alt={ProjectData.project?.projectThumbnailAlt}
+            src={projectData.projectThumbnail?.url ?? ""}
+            alt={projectData.projectThumbnailAlt}
           />
         )}
         <Layout className="py-4">
           <h2 className="text-center text-3xl font-black tracking-wide sm:text-4xl md:text-5xl">
-            {ProjectData.project.title}
+            {projectData.title}
           </h2>
 
           <p className="text-secondary mt-4 text-center">
-            {ProjectData.project.description}
+            {projectData.description}
           </p>
 
           <div className="text-secondary mt-4 text-center">
             <p>{t("techDescription")}</p>
             <ul className="mt-4 flex flex-col justify-center gap-4 sm:flex-row">
-              {ProjectData.project.techStack.map((stack, index) => {
+              {projectData.techStack.map((stack, index) => {
                 return (
                   <li
                     className="bg-secondary float-left rounded-full p-1 px-3"
@@ -64,7 +59,7 @@ const ProjectPage = ({ slug }: ProjectPageProps) => {
           <article
             className="prose prose-zinc mt-12 max-w-none prose-a:underline-offset-2 prose-a:transition-colors hover:prose-a:text-primary-500 dark:prose-invert lg:prose-lg"
             dangerouslySetInnerHTML={{
-              __html: ProjectData.project.content.html,
+              __html: projectData.content.html,
             }}
           ></article>
         </Layout>
@@ -74,6 +69,8 @@ const ProjectPage = ({ slug }: ProjectPageProps) => {
   );
 };
 
+export default ProjectPage;
+
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [],
@@ -82,27 +79,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  const lang = locale.replace("-", "");
-  const client = createGraphCMSClient(lang);
-  await client
-    .query(GetProjectBySlugDocument, {
-      slug: params?.slug,
-    })
-    .toPromise();
+  const slug = params?.slug as string;
+
+  const GLanguage = locale.replace("-", "");
+  const GClient = initGraphClient(GLanguage);
+
+  const { project } = await GClient.request(GetProjectBySlugDocument, { slug });
 
   return {
     props: {
-      urqlState: ssrCache.extractData(),
-      slug: params?.slug,
+      projectData: project,
       ...(await serverSideTranslations(locale, ["common", "project"])),
     },
-    revalidate: 86400,
   };
 };
-
-export default withUrqlClient(
-  (ssr) => ({
-    url: process.env.NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL,
-  }),
-  { ssr: false }
-)(ProjectPage);
