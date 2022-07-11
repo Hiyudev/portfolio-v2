@@ -1,7 +1,7 @@
 import { GraphQLClient } from "graphql-request";
 
-const GraphCMSClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHCMS_SCHEMA_URL);
-const HashnodeClient = new GraphQLClient(process.env.NEXT_PUBLIC_HASHNODE_SCHEMA_URL);
+const GraphCMSClient = new GraphQLClient(process.env.GRAPHCMS_SCHEMA_URL);
+const HashnodeClient = new GraphQLClient(process.env.HASHNODE_SCHEMA_URL);
 
 export const initGraphClient = (locale: string = 'enUS') => {
   const client = GraphCMSClient;
