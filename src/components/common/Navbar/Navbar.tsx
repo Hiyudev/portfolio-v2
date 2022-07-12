@@ -2,6 +2,7 @@ import * as Popover from "@radix-ui/react-popover";
 import Link from "next/link";
 import { List } from "phosphor-react";
 import Logo from "../../icon/Logo";
+import LanguageSwitcher from "./LanguageSwitcher";
 import LinkList from "./LinkList";
 import ThemeSwitcher from "./ThemeSwitcher";
 
@@ -14,13 +15,13 @@ function Navbar() {
         </a>
       </Link>
 
-      <div className="flex gap-8">
+      <div className="flex items-center gap-8">
         <Popover.Root>
           <Popover.Trigger className="fancy-ring fancy-ring-bg visible rounded-md sm:hidden">
             <List size={24} />
           </Popover.Trigger>
           <Popover.Content className="fancy-ring fancy-ring-bg mt-4 rounded-md">
-            <ul className="bg-primary flex flex-row justify-around gap-x-4 overflow-hidden p-5">
+            <ul className="bg-primary flex flex-col justify-around gap-4 rounded-md p-5">
               <LinkList />
             </ul>
           </Popover.Content>
@@ -29,6 +30,8 @@ function Navbar() {
         <ul className="hidden flex-row gap-5 sm:flex">
           <LinkList />
         </ul>
+
+        <LanguageSwitcher />
 
         <ThemeSwitcher />
       </div>
