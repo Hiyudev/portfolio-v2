@@ -20,8 +20,10 @@ function Navbar() {
           <Popover.Trigger className="fancy-ring fancy-ring-bg visible rounded-md sm:hidden">
             <List size={24} />
           </Popover.Trigger>
-          <Popover.Content className="fancy-ring fancy-ring-bg mt-4 rounded-md">
-            <ul className="bg-primary flex flex-col justify-around gap-4 rounded-md p-5">
+          <Popover.Content className="fancy-ring fancy-ring-bg-secondary rounded-md">
+            <Popover.Arrow className="fill-zinc-800" />
+
+            <ul className="bg-secondary flex min-w-max flex-col justify-around gap-4 rounded-md p-5">
               <LinkList />
             </ul>
           </Popover.Content>
