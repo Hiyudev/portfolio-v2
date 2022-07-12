@@ -19,19 +19,19 @@ function LanguageSwitcher() {
       <Popover.Trigger className="fancy-ring fancy-ring-bg rounded-md">
         <Translate size={24} />
       </Popover.Trigger>
-      <Popover.Content className="fancy-ring fancy-ring-bg mt-4 rounded-md">
-        <ul className="bg-primary flex flex-col justify-around gap-2 overflow-hidden p-5">
+      <Popover.Content className="fancy-ring fancy-ring-bg-secondary rounded-md">
+        <Popover.Arrow className="fill-zinc-800" />
+        <ul className="bg-secondary flex flex-col justify-around gap-4 overflow-hidden rounded-md p-5">
           {Object.entries(LocalesSupport).map(([lang, label], i) => (
             <li key={i} className="flex items-center gap-2">
-              <button onClick={() => changeWebsiteLanguage(lang)}>
-                <a
-                  aria-label={`Switch website language to ${label}`}
-                  className={`${
-                    lang === locale ? "text-primary" : "text-gray-500"
-                  } fancy-ring fancy-ring-bg rounded-md`}
-                >
-                  {label}
-                </a>
+              <button
+                aria-label={`Switch website language to ${label}`}
+                className={`${
+                  lang === locale ? "text-primary" : "text-secondary"
+                } fancy-ring fancy-ring-bg-secondary rounded-md`}
+                onClick={() => changeWebsiteLanguage(lang)}
+              >
+                {label}
               </button>
             </li>
           ))}

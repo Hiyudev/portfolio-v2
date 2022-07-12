@@ -41,6 +41,10 @@
     @apply focus:ring-offset-background-100 dark:focus:ring-offset-background-900;
   }
 
+  .fancy-ring-bg-secondary {
+    @apply focus:ring-offset-background-200 dark:focus:ring-offset-background-800;
+  }
+
   .fancy-gradient {
     @apply bg-gradient-to-r from-primary-500 to-secondary-500;
   }
