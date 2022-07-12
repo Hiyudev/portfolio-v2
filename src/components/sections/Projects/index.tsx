@@ -1,10 +1,10 @@
 import { useTranslation } from "next-i18next";
-import { GetAllProjectsQuery } from "../../../graphql/generated/graphql";
+import { Project } from "../../../graphql/generated/graphcms";
 import Title from "../../common/Title";
 import DetailedProject from "./DetailedProject";
 
 interface ProjectsSectionProps {
-  projectsData: GetAllProjectsQuery["projects"];
+  projectsData: Project[];
   description?: string;
 }
 

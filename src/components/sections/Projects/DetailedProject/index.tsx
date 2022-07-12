@@ -2,10 +2,10 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowSquareOut, GithubLogo } from "phosphor-react";
-import { GetAllProjectsQuery } from "../../../../graphql/generated/graphql";
+import { Project } from "../../../../graphql/generated/graphcms";
 
 interface ProjectProps {
-  projectData: GetAllProjectsQuery["projects"][0];
+  projectData: Project;
 }
 
 function DetailedProject({ projectData }: ProjectProps) {
@@ -14,7 +14,7 @@ function DetailedProject({ projectData }: ProjectProps) {
   return (
     <div className="bg-primary border-secondary z-10 grid grid-rows-2 gap-3 rounded-md border p-3 shadow-lg sm:gap-4 sm:p-4 md:grid-cols-2 md:grid-rows-1 md:gap-5 md:p-5 md:shadow-none">
       <div className="relative">
-        {projectData.projectThumbnail?.url && (
+        {projectData.projectThumbnail && (
           <Image
             objectFit="cover"
             layout="fill"
@@ -41,7 +41,7 @@ function DetailedProject({ projectData }: ProjectProps) {
               className="fancy-ring fancy-ring-bg group mt-4 flex items-center gap-2 rounded-md"
             >
               <span className="group-hover:text-primary-500 group-focus:text-primary-500">
-                <b>{t("datailedProject.learnMore")}</b>
+                <b>{t("detailedProject.learnMore")}</b>
               </span>
               <ArrowRight
                 aria-hidden="true"
