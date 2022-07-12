@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import BlogsSection from "../components/sections/Blog";
 import {
   GetAllFeaturedProjectsDocument,
-  GetAllProjectsDocument,
   GetSectionByTitleDocument,
   Project,
 } from "../graphql/generated/graphcms";
@@ -66,8 +65,7 @@ const HomePage = ({
 export default HomePage;
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const GLanguage = locale.replace("-", "");
-  const GClient = initGraphClient(GLanguage);
+  const GClient = initGraphClient(locale);
 
   const {
     section: { content: HeroTags },
