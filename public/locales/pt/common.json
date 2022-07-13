@@ -2,7 +2,8 @@
   "navbar": {
     "home": "Início",
     "projects": "Projetos",
-    "blogs": "Blogs"
+    "blogs": "Blogs",
+    "links": "Links"
   },
   "footer": {
     "description": "Crio e desenho programas rápidos e acessíveis",

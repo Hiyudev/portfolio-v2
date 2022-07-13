@@ -15,7 +15,7 @@ function Navbar() {
         </a>
       </Link>
 
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 lg:gap-8">
         <Popover.Root>
           <Popover.Trigger className="fancy-ring fancy-ring-bg visible rounded-md sm:hidden">
             <List size={24} />

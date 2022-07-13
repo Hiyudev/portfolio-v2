@@ -1,4 +1,11 @@
-import { Article, GithubLogo, House, ShareNetwork, TwitterLogo } from "phosphor-react";
+import {
+  Article,
+  GithubLogo,
+  House,
+  Link,
+  ShareNetwork,
+  TwitterLogo,
+} from "phosphor-react";
 
 export const SocialList = {
   Twitter: {
@@ -40,6 +47,16 @@ export const HomeSectionsList = {
     link: "/#blogs",
     image: {
       source: <Article aria-label="Blog articles" weight="bold" />,
+    },
+  },
+  LINKS: {
+    label: {
+      value: "links",
+      description: "view links page",
+    },
+    link: "/links",
+    image: {
+      source: <Link aria-label="Links image" weight="bold" />,
     },
   },
 };
