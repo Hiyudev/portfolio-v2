@@ -6,5 +6,8 @@
       "partOne": "Learn more about the",
       "partTwo": "project"
     }
+  },
+  "galleryProject": {
+    "viewLabel": "View project"
   }
 }

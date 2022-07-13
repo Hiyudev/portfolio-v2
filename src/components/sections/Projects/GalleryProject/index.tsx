@@ -23,14 +23,14 @@ function GalleryProject({ projectData }: IGalleryProjectProps) {
               <Image
                 objectFit="cover"
                 layout="fill"
-                className="scale-100 opacity-75 transition-transform group-hover:scale-105 group-hover:opacity-100"
+                className="scale-100 opacity-100 transition-transform group-hover:scale-105 group-hover:opacity-75"
                 priority={false}
                 alt={projectData.projectThumbnailAlt}
                 src={projectData.projectThumbnail.url}
               />
             )}
             <div className="bg-primary absolute hidden h-32 w-32 items-center justify-center rounded-full group-hover:flex">
-              View project
+              {t("galleryProject.viewLabel")}
             </div>
           </div>
         </a>
