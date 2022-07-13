@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowSquareOut, GithubLogo } from "phosphor-react";
 import { Project } from "../../../../graphql/generated/graphcms";
+import Card from "../../../common/Card";
 
 interface ProjectProps {
   projectData: Project;
@@ -12,7 +13,7 @@ function DetailedProject({ projectData }: ProjectProps) {
   const { t } = useTranslation("project");
 
   return (
-    <div className="bg-primary border-secondary z-10 grid grid-rows-2 gap-3 rounded-md border p-3 shadow-lg sm:gap-4 sm:p-4 md:grid-cols-2 md:grid-rows-1 md:gap-5 md:p-5 md:shadow-none">
+    <Card className="z-10 grid grid-rows-2 gap-3 shadow-lg sm:gap-4 sm:p-4 md:grid-cols-2 md:grid-rows-1 md:gap-5 md:p-5 md:shadow-none">
       <div className="relative">
         {projectData.projectThumbnail && (
           <Image
@@ -90,7 +91,7 @@ function DetailedProject({ projectData }: ProjectProps) {
           </ul>
         </div>
       </div>
-    </div>
+    </Card>
   );
 }
 
