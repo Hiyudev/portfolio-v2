@@ -16,7 +16,7 @@ function LanguageSwitcher() {
 
   return (
     <Popover.Root>
-      <Popover.Trigger className="fancy-ring fancy-ring-bg rounded-md transition-colors hover:text-primary-500 focus:text-primary-500">
+      <Popover.Trigger aria-label="Language Switcher" className="fancy-ring fancy-ring-bg rounded-md transition-colors hover:text-primary-500 focus:text-primary-500">
         <Translate size={24} />
       </Popover.Trigger>
       <Popover.Content className="fancy-ring fancy-ring-bg-secondary rounded-md">
