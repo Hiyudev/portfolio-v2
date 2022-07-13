@@ -1,18 +1,8 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { Code, GithubLogo, Heart, TwitterLogo } from "phosphor-react";
+import { Code, Heart } from "phosphor-react";
+import { SocialList } from "../../../types";
 import LogoIcon from "../../icon/Logo";
-
-export const SocialList = {
-  Twitter: {
-    logo: <TwitterLogo aria-label="Twitter logo" weight={"bold"} />,
-    link: "/social/twitter",
-  },
-  Github: {
-    logo: <GithubLogo aria-label="Github logo" weight={"bold"} />,
-    link: "/social/github",
-  },
-};
 
 function Footer() {
   const { t } = useTranslation();

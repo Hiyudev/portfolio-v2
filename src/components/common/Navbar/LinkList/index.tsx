@@ -1,46 +1,13 @@
 import { useTranslation } from "next-i18next";
 import Link from "next/link";
-import { ShareNetwork, Article, House } from "phosphor-react";
 import { useMemo } from "react";
-
-export const websiteHomeSections = {
-  HOME: {
-    label: {
-      value: "home",
-      description: "view home",
-    },
-    link: "/",
-    image: {
-      source: <House aria-label="House image" weight="bold" />,
-    },
-  },
-  PROJECTS: {
-    label: {
-      value: "projects",
-      description: "view projects",
-    },
-    link: "/#projects",
-    image: {
-      source: <ShareNetwork aria-label="Projects image" weight="bold" />,
-    },
-  },
-  BLOGS: {
-    label: {
-      value: "blogs",
-      description: "view blog articles",
-    },
-    link: "/#blogs",
-    image: {
-      source: <Article aria-label="Blog articles" weight="bold" />,
-    },
-  },
-};
+import { HomeSectionsList } from "../../../../types";
 
 function LinkList() {
   const { t } = useTranslation();
 
   const NavLinkList = useMemo(() => {
-    return Object.entries(websiteHomeSections).map(([key, value]) => {
+    return Object.entries(HomeSectionsList).map(([key, value]) => {
       const label = t(`navbar.${value.label.value}`);
       return (
         <li key={key}>

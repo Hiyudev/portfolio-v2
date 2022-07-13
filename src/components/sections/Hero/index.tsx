@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { SocialList } from "../../common/Footer";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
+import { SocialList } from "../../../types";
 
 interface HeroSectionProps {
   tags: string;
