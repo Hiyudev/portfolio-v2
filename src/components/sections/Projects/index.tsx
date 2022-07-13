@@ -31,7 +31,7 @@ function ProjectsSection({ projectsData, description }: ProjectsSectionProps) {
           </span>
         </p>
       )}
-      <ul className="mt-8 gap-y-5 gap-x-5">
+      <ul className="mt-8 flex flex-col gap-y-5">
         {projectsData.map((project) => {
           return (
             <li key={project.slug}>
