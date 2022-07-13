@@ -1,9 +1,9 @@
 import {
-  Article,
   GithubLogo,
   House,
+  Kanban,
   Link,
-  ShareNetwork,
+  Newspaper,
   TwitterLogo,
 } from "phosphor-react";
 
@@ -34,9 +34,9 @@ export const HomeSectionsList = {
       value: "projects",
       description: "view projects",
     },
-    link: "/#projects",
+    link: "/projects",
     image: {
-      source: <ShareNetwork aria-label="Projects image" weight="bold" />,
+      source: <Kanban aria-label="Projects image" weight="bold" />,
     },
   },
   BLOGS: {
@@ -46,7 +46,7 @@ export const HomeSectionsList = {
     },
     link: "/#blogs",
     image: {
-      source: <Article aria-label="Blog articles" weight="bold" />,
+      source: <Newspaper aria-label="Blog articles" weight="bold" />,
     },
   },
   LINKS: {
