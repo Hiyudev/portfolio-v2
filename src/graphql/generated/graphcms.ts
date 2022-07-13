@@ -801,8 +801,8 @@ export type ImageTransformationInput = {
 /** Locale system enumeration */
 export enum Locale {
   /** System locale */
-  EnUs = 'enUS',
-  PtBr = 'ptBR'
+  En = 'en',
+  Pt = 'pt'
 }
 
 /** Representing a geolocation point with latitude and longitude */
@@ -1715,10 +1715,10 @@ export type ProjectConnection = {
 };
 
 export type ProjectCreateInput = {
-  /** content input for default locale (enUS) */
+  /** content input for default locale (en) */
   content?: InputMaybe<Scalars['RichTextAST']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
-  /** description input for default locale (enUS) */
+  /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   featured: Scalars['Boolean'];
   githubLink?: InputMaybe<Scalars['String']>;
@@ -1726,7 +1726,7 @@ export type ProjectCreateInput = {
   localizations?: InputMaybe<ProjectCreateLocalizationsInput>;
   projectLink?: InputMaybe<Scalars['String']>;
   projectThumbnail?: InputMaybe<AssetCreateOneInlineInput>;
-  /** projectThumbnailAlt input for default locale (enUS) */
+  /** projectThumbnailAlt input for default locale (en) */
   projectThumbnailAlt?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   techStack?: InputMaybe<Array<Scalars['String']>>;
@@ -1976,9 +1976,9 @@ export enum ProjectOrderByInput {
 }
 
 export type ProjectUpdateInput = {
-  /** content input for default locale (enUS) */
+  /** content input for default locale (en) */
   content?: InputMaybe<Scalars['RichTextAST']>;
-  /** description input for default locale (enUS) */
+  /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   featured?: InputMaybe<Scalars['Boolean']>;
   githubLink?: InputMaybe<Scalars['String']>;
@@ -1986,7 +1986,7 @@ export type ProjectUpdateInput = {
   localizations?: InputMaybe<ProjectUpdateLocalizationsInput>;
   projectLink?: InputMaybe<Scalars['String']>;
   projectThumbnail?: InputMaybe<AssetUpdateOneInlineInput>;
-  /** projectThumbnailAlt input for default locale (enUS) */
+  /** projectThumbnailAlt input for default locale (en) */
   projectThumbnailAlt?: InputMaybe<Scalars['String']>;
   slug?: InputMaybe<Scalars['String']>;
   techStack?: InputMaybe<Array<Scalars['String']>>;
@@ -2032,14 +2032,14 @@ export type ProjectUpdateManyInlineInput = {
 };
 
 export type ProjectUpdateManyInput = {
-  /** content input for default locale (enUS) */
+  /** content input for default locale (en) */
   content?: InputMaybe<Scalars['RichTextAST']>;
-  /** description input for default locale (enUS) */
+  /** description input for default locale (en) */
   description?: InputMaybe<Scalars['String']>;
   featured?: InputMaybe<Scalars['Boolean']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<ProjectUpdateManyLocalizationsInput>;
-  /** projectThumbnailAlt input for default locale (enUS) */
+  /** projectThumbnailAlt input for default locale (en) */
   projectThumbnailAlt?: InputMaybe<Scalars['String']>;
   techStack?: InputMaybe<Array<Scalars['String']>>;
 };
@@ -3777,7 +3777,7 @@ export type SectionConnection = {
 };
 
 export type SectionCreateInput = {
-  /** content input for default locale (enUS) */
+  /** content input for default locale (en) */
   content?: InputMaybe<Scalars['String']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   /** Inline mutations for managing document localizations excluding the default locale */
@@ -3943,7 +3943,7 @@ export enum SectionOrderByInput {
 }
 
 export type SectionUpdateInput = {
-  /** content input for default locale (enUS) */
+  /** content input for default locale (en) */
   content?: InputMaybe<Scalars['String']>;
   /** Manage document localizations */
   localizations?: InputMaybe<SectionUpdateLocalizationsInput>;
@@ -3987,7 +3987,7 @@ export type SectionUpdateManyInlineInput = {
 };
 
 export type SectionUpdateManyInput = {
-  /** content input for default locale (enUS) */
+  /** content input for default locale (en) */
   content?: InputMaybe<Scalars['String']>;
   /** Optional updates to localizations */
   localizations?: InputMaybe<SectionUpdateManyLocalizationsInput>;
