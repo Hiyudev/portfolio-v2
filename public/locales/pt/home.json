@@ -6,5 +6,9 @@
   },
   "hero": {
     "socialMediaText": "Me encontre nas seguintes redes sociais"
+  },
+  "project": {
+    "visit": "Veja minha",
+    "page": "pagina de projetos"
   }
 }

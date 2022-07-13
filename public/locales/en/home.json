@@ -6,5 +6,9 @@
   },
   "hero": {
     "socialMediaText": "Find me on these social media"
+  },
+  "project": {
+    "visit": "Visit my",
+    "page": "projects page"
   }
 }
