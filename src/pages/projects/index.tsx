@@ -25,15 +25,13 @@ const ProjectsPage = ({ ProjectsData }: ProjectsPageProps) => {
     <>
       <Navbar />
       <Layout className="mt-20">
-        <section id="projects" className="mt-8md:mt-16">
-          <Title>{t("titles.projects")}</Title>
+        <Title>{t("titles.projects")}</Title>
 
-          <ul className="mt-4 grid grid-cols-4 gap-2">
-            {ProjectsData.map((project) => (
-              <GalleryProject key={project.slug} projectData={project} />
-            ))}
-          </ul>
-        </section>
+        <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {ProjectsData.map((project) => (
+            <GalleryProject key={project.slug} projectData={project} />
+          ))}
+        </ul>
       </Layout>
 
       <Footer />
