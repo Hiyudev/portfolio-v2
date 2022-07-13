@@ -17,11 +17,13 @@ function ProjectsSection({ projectsData, description }: ProjectsSectionProps) {
       <Title>{t("titles.projects")}</Title>
       {description && (
         <p className="text-secondary mt-4 sm:text-lg md:text-xl">
-          {description}{" "}
+          {description}
+          <br />
+          <br />
           <span>
             {t("project.visit")}{" "}
             <Link href="/projects" passHref>
-              <a className="underline-offset-2 transition-colors hover:text-primary-500">
+              <a className="underline underline-offset-2 transition-colors hover:text-primary-500">
                 {t("project.page")}
               </a>
             </Link>
