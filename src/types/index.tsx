@@ -44,7 +44,7 @@ export const HomeSectionsList = {
       value: "blogs",
       description: "view blog articles",
     },
-    link: "/#blogs",
+    link: "/blogs",
     image: {
       source: <Newspaper aria-label="Blog articles" weight="bold" />,
     },
