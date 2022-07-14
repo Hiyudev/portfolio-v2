@@ -29,7 +29,7 @@ const SEO = {
       "Enthusiast developer passionate about the technology world. I create and design fast and accessible programs to make your idea a real-world product.",
     images: [
       {
-        url: "https://readme.so/asset/banner.png",
+        url: "https://hiyudev.me/static/Banner.png",
         width: 1360,
         height: 768,
         alt: "Og Image Alt",
