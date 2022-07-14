@@ -4,6 +4,7 @@ import Footer from "../../components/common/Footer";
 import Navbar from "../../components/common/Navbar";
 import Layout from "../../components/layout";
 import {
+  GetAllProjectsDocument,
   GetProjectBySlugDocument,
   Project,
 } from "../../graphql/generated/graphcms";
@@ -72,8 +73,19 @@ const ProjectPage = ({ projectData }: ProjectPageProps) => {
 export default ProjectPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const GClient = initGraphClient();
+
+  const { projects: ProjectsData } = await GClient.request(
+    GetAllProjectsDocument
+  );
+  const paths = ProjectsData.map((project) => ({
+    params: {
+      slug: project.slug,
+    },
+  }));
+
   return {
-    paths: [],
+    paths,
     fallback: "blocking",
   };
 };
