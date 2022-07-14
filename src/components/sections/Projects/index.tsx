@@ -16,7 +16,7 @@ function ProjectsSection({ projectsData, description }: ProjectsSectionProps) {
     <section id="projects" className="mt-8 md:mt-16">
       <Title>{t("titles.projects")}</Title>
       {description && (
-        <p className="text-secondary mt-4 sm:text-lg md:text-xl">
+        <p className="mt-4 sm:text-lg md:text-xl">
           {description}
           <br />
           <br />
