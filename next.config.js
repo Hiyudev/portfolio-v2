@@ -2,7 +2,7 @@ const { i18n } = require("./next-i18next.config");
 
 module.exports = {
   images: {
-    domains: ["media.graphassets.com"],
+    domains: ["media.graphassets.com", "cdn.hashnode.com"],
   },
   i18n,
   async redirects() {

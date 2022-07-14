@@ -3,11 +3,11 @@ import { Post } from "../../../graphql/generated/hashnode";
 import Title from "../../common/Title";
 import BlogPost from "./BlogPost";
 
-interface BlogSectionProps {
+interface IBlogSectionProps {
   blogPosts: Post[];
 }
 
-function BlogsSection({ blogPosts }) {
+function BlogsSection({ blogPosts }: IBlogSectionProps) {
   const { t } = useTranslation("home");
 
   return (
@@ -25,6 +25,8 @@ function BlogsSection({ blogPosts }) {
               description={post.brief}
               coverImageUrl={post.coverImage}
               href={`/blog/${post.slug}`}
+              timePublished={post.dateAdded}
+              text={post.contentMarkdown}
             />
           ))}
         </ul>

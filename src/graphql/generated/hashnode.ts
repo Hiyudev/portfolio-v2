@@ -614,7 +614,7 @@ export type IsRepublished = {
 export type GetAllBlogPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllBlogPostsQuery = { __typename?: 'Query', user?: { __typename?: 'User', publication?: { __typename?: 'Publication', posts?: Array<{ __typename?: 'Post', title?: string | null, brief?: string | null, slug?: string | null, coverImage: string } | null> | null } | null } | null };
+export type GetAllBlogPostsQuery = { __typename?: 'Query', user?: { __typename?: 'User', publication?: { __typename?: 'Publication', posts?: Array<{ __typename?: 'Post', title?: string | null, brief?: string | null, slug?: string | null, coverImage: string, contentMarkdown?: string | null } | null> | null } | null } | null };
 
 
 export const GetAllBlogPostsDocument = gql`
@@ -626,6 +626,7 @@ export const GetAllBlogPostsDocument = gql`
         brief
         slug
         coverImage
+        contentMarkdown
       }
     }
   }
