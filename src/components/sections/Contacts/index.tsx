@@ -10,7 +10,7 @@ function ContactsSection({ description }: ContactsSectionProps) {
   const { t } = useTranslation("home");
 
   return (
-    <section className="mt-8 grid grid-rows-2 gap-4 md:mt-16 md:grid-cols-2">
+    <section className="mt-8 grid grid-rows-2 gap-4 md:mt-16 md:grid-cols-2 md:grid-rows-1">
       <div className="space-y-4">
         <Title>{t("titles.contact")}</Title>
         <p className="text-secondary">{description}</p>
