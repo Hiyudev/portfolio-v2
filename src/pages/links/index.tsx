@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { GetStaticProps } from "next/types";
 import { User } from "phosphor-react";
 import BigLogoIcon from "../../components/icon/BigLogo";
 import { SocialList } from "../../types";
