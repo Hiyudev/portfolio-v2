@@ -1,7 +1,7 @@
 import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowSquareOut, GithubLogo } from "phosphor-react";
+import { ArrowSquareOut, CaretRight, GithubLogo } from "phosphor-react";
 import { Project } from "../../../../graphql/generated/graphcms";
 import Card from "../../../common/Card";
 
@@ -44,9 +44,10 @@ function DetailedProject({ projectData }: ProjectProps) {
               <span className="group-hover:text-primary-500 group-focus:text-primary-500">
                 <b>{t("detailedProject.learnMore")}</b>
               </span>
-              <ArrowRight
+              <CaretRight
+                weight="fill"
                 aria-hidden="true"
-                className="-translate-x-1 text-primary-500 opacity-0 transition-transform group-hover:translate-x-0 group-hover:opacity-100 group-focus:translate-x-0 group-focus:opacity-100"
+                className="h-2 w-2 -translate-x-1 transition-transform group-hover:translate-x-0 group-hover:scale-150 group-hover:text-primary-500 group-focus:translate-x-0 group-focus:scale-150 group-focus:text-primary-500"
               />
             </a>
           </Link>
