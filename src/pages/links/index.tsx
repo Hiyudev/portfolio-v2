@@ -18,7 +18,7 @@ const LinksPage = () => {
       <ul className="flex flex-col gap-4">
         <li>
           <Link href={"/"} passHref>
-            <a className="bg-primary border-secondary group relative flex min-w-[240px] items-center justify-center gap-2 rounded-full border p-2">
+            <a className="bg-primary border-secondary group relative flex min-w-[240px] items-center justify-center gap-2 rounded-full border p-2 outline-none">
               <div className="fancy-gradient absolute inset-0.5 -z-10 opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
 
               <User weight="bold" />
@@ -29,7 +29,7 @@ const LinksPage = () => {
         {Object.entries(SocialList).map(([name, { logo, link }]) => (
           <li key={name}>
             <Link href={link} passHref>
-              <a className="bg-primary border-secondary group relative flex min-w-[240px] items-center justify-center gap-2 rounded-full border p-2">
+              <a className="bg-primary border-secondary group relative flex min-w-[240px] items-center justify-center gap-2 rounded-full border p-2 outline-none">
                 <div className="fancy-gradient absolute inset-0.5 -z-10 opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
 
                 {logo}
