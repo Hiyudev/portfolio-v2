@@ -23,7 +23,7 @@ function ProjectsSection({ projectsData, description }: ProjectsSectionProps) {
           <span>
             {t("project.visit")}{" "}
             <Link href="/projects" passHref>
-              <a className="underline underline-offset-2 transition-colors hover:text-primary-500">
+              <a className="fancy-ring fancy-ring-bg rounded-md underline underline-offset-2 transition-colors hover:text-primary-500 focus:text-primary-500">
                 {t("project.page")}
               </a>
             </Link>
