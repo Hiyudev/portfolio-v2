@@ -25,16 +25,18 @@ const ProjectPage = ({ projectData }: ProjectPageProps) => {
     <>
       <Navbar />
       <section className="mt-20">
-        {projectData.projectThumbnail && (
-          <Image
-            objectFit="cover"
-            height={600}
-            width={1400}
-            src={projectData.projectThumbnail?.url ?? ""}
-            alt={projectData.projectThumbnailAlt}
-          />
-        )}
-        <Layout className="py-4">
+        <Layout>
+          <div className="border-secondary relative mb-8 h-96 w-full overflow-hidden rounded-2xl border">
+            {projectData.projectThumbnail && (
+              <Image
+                className="opacity-80 transition-transform hover:scale-105 hover:opacity-100"
+                layout="fill"
+                src={projectData.projectThumbnail?.url ?? ""}
+                alt={projectData.projectThumbnailAlt}
+              />
+            )}
+          </div>
+
           <h2 className="text-center text-3xl font-black tracking-wide sm:text-4xl md:text-5xl">
             {projectData.title}
           </h2>
