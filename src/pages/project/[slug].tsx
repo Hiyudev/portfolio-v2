@@ -86,8 +86,8 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
       return {
         params: {
           slug: project.slug,
-          locale,
         },
+        locale,
       };
     });
   });
