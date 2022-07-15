@@ -1,2 +1,0 @@
-- Change the tags parent tag, ul to div
-- Highlated projects has a shadow on medium screens
