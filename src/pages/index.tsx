@@ -1,6 +1,5 @@
 import { GetStaticProps } from "next/types";
 import dynamic from "next/dynamic";
-import BlogsSection from "../components/sections/Blog";
 import {
   GetAllFeaturedProjectsDocument,
   GetSectionByTitleDocument,
@@ -20,6 +19,7 @@ const ContactsSection = dynamic(
 const ProjectsSection = dynamic(
   () => import("../components/sections/Projects")
 );
+const BlogsSection = dynamic(() => import("../components/sections/Blog"));
 
 interface HomePageProps {
   HeroTags: string;

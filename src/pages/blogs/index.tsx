@@ -1,16 +1,20 @@
+import dynamic from "next/dynamic";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { GetStaticProps } from "next/types";
-import Footer from "../../components/common/Footer";
-import Navbar from "../../components/common/Navbar";
 import Title from "../../components/common/Title";
-import Layout from "../../components/layout";
-import BlogPost from "../../components/sections/Blog/BlogPost";
 import {
   GetAllBlogPostsDocument,
   Post,
 } from "../../graphql/generated/hashnode";
 import { initHashClient } from "../../lib/client";
+
+const BlogPost = dynamic(
+  () => import("../../components/sections/Blog/BlogPost")
+);
+const Footer = dynamic(() => import("../../components/common/Footer"));
+const Layout = dynamic(() => import("../../components/layout"));
+const Navbar = dynamic(() => import("../../components/common/Navbar"));
 
 interface IBlogPostsProps {
   BlogPosts: Post[];

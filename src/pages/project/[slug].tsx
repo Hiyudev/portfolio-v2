@@ -1,8 +1,5 @@
 import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next/types";
-import Footer from "../../components/common/Footer";
-import Navbar from "../../components/common/Navbar";
-import Layout from "../../components/layout";
 import {
   GetAllProjectsDocument,
   GetProjectBySlugDocument,
@@ -11,6 +8,11 @@ import {
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { initGraphClient } from "../../lib/client";
+import dynamic from "next/dynamic";
+
+const Footer = dynamic(() => import("../../components/common/Footer"));
+const Layout = dynamic(() => import("../../components/layout"));
+const Navbar = dynamic(() => import("../../components/common/Navbar"));
 
 interface ProjectPageProps {
   projectData: Project;

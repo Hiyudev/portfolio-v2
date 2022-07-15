@@ -8,8 +8,10 @@ import {
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Title from "../../components/common/Title";
 import { useTranslation } from "next-i18next";
-import GalleryProject from "../../components/sections/Projects/GalleryProject";
 
+const GalleryProject = dynamic(
+  () => import("../../components/sections/Projects/GalleryProject")
+);
 const Footer = dynamic(() => import("../../components/common/Footer"));
 const Layout = dynamic(() => import("../../components/layout"));
 const Navbar = dynamic(() => import("../../components/common/Navbar"));
