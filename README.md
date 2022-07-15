@@ -34,6 +34,8 @@ Using technologies such as [Typescript](https://www.typescriptlang.org/), [Nex
 
 For the UI styling, I made mockups on [Figma](https://www.figma.com/) and transformed them to JSX using [Tailwind.css](https://tailwindcss.com/) for faster styling with many utilities, like screen-readers only. Also, UI Libraries like [Radix UI](https://www.radix-ui.com/) secure accessibility making a web developer's life easy.
 
+<img src=".github/Mockup.png" alt="Project mockups"/>
+
 ## 🏁 Getting Started <a name = "started"></a>
 
 > 🚨 <b>Please credit me</b> if you use this project as a base / reference to your own portfolio. <b>Plagiarism is bad</b>🚨
