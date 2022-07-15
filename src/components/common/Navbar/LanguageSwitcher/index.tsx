@@ -16,11 +16,14 @@ function LanguageSwitcher() {
 
   return (
     <Popover.Root>
-      <Popover.Trigger aria-label="Language Switcher" className="fancy-ring fancy-ring-bg rounded-md transition-colors hover:text-primary-500 focus:text-primary-500">
+      <Popover.Trigger
+        aria-label="Language Switcher"
+        className="fancy-ring fancy-ring-bg rounded-md transition-colors hover:text-primary-500 focus:text-primary-500"
+      >
         <Translate size={24} />
       </Popover.Trigger>
-      <Popover.Content className="fancy-ring fancy-ring-bg-secondary rounded-md">
-        <Popover.Arrow className="fill-zinc-800" />
+      <Popover.Content className="rounded-md">
+        <Popover.Arrow className="fill-zinc-200 dark:fill-zinc-800" />
         <ul className="bg-secondary flex flex-col justify-around gap-4 overflow-hidden rounded-md p-5">
           {Object.entries(LocalesSupport).map(([lang, label], i) => (
             <li key={i} className="flex items-center gap-2">
