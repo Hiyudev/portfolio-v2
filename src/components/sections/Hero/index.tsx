@@ -30,7 +30,7 @@ function HeroSection({ tags, description }: HeroSectionProps) {
             {Object.entries(SocialList).map(([key, value], index) => {
               return (
                 <li
-                  className="border-secondary relative h-full rounded-md border"
+                  className="border-secondary relative h-full rounded-md border shadow-lg dark:shadow-none"
                   key={index}
                 >
                   <Link passHref href={value.link}>
