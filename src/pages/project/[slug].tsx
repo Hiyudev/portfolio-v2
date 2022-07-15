@@ -72,17 +72,26 @@ const ProjectPage = ({ projectData }: ProjectPageProps) => {
 
 export default ProjectPage;
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
   const GClient = initGraphClient();
 
   const { projects: ProjectsData } = await GClient.request(
     GetAllProjectsDocument
   );
-  const paths = ProjectsData.map((project) => ({
-    params: {
-      slug: project.slug,
-    },
-  }));
+
+  const paths = [];
+  ProjectsData.map((project) => {
+    const localesPath = locales.map((locale) => {
+      return {
+        params: {
+          slug: project.slug,
+          locale,
+        },
+      };
+    });
+
+    paths.push(...localesPath);
+  });
 
   return {
     paths,
@@ -102,5 +111,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       projectData: project,
       ...(await serverSideTranslations(locale, ["common", "project"])),
     },
+    revalidate: 86400,
   };
 };
