@@ -81,9 +81,8 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
     GetAllProjectsDocument
   );
 
-  const paths = [];
-  ProjectsData.map((project) => {
-    const localesPath = locales.map((locale) => {
+  const paths = ProjectsData.flatMap((project) => {
+    return locales.map((locale) => {
       return {
         params: {
           slug: project.slug,
@@ -91,8 +90,6 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }) => {
         },
       };
     });
-
-    paths.push(...localesPath);
   });
 
   return {
