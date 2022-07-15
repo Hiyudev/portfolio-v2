@@ -9,6 +9,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import { initGraphClient } from "../../lib/client";
 import dynamic from "next/dynamic";
+import Tag from "../../components/common/Tag";
 
 const Footer = dynamic(() => import("../../components/common/Footer"));
 const Layout = dynamic(() => import("../../components/layout"));
@@ -49,14 +50,7 @@ const ProjectPage = ({ projectData }: ProjectPageProps) => {
             <p>{t("techDescription")}</p>
             <ul className="mt-4 flex flex-col justify-center gap-4 sm:flex-row">
               {projectData.techStack.map((stack, index) => {
-                return (
-                  <li
-                    className="bg-secondary float-left rounded-full p-1 px-3"
-                    key={index}
-                  >
-                    {stack}
-                  </li>
-                );
+                return <Tag key={index}>{stack}</Tag>;
               })}
             </ul>
           </div>

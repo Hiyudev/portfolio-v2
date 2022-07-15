@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowSquareOut, CaretRight, GithubLogo } from "phosphor-react";
 import { Project } from "../../../../graphql/generated/graphcms";
 import Card from "../../../common/Card";
+import Tag from "../../../common/Tag";
 
 interface ProjectProps {
   projectData: Project;
@@ -56,11 +57,7 @@ function DetailedProject({ projectData }: ProjectProps) {
         <div className="mt-4 flex flex-col items-center justify-between gap-4 md:flex-row md:gap-0">
           <ul className="flex w-full flex-col flex-wrap gap-2 md:flex-row">
             {projectData.techStack.map((techStack, index) => {
-              return (
-                <li className="bg-secondary rounded-full p-1 px-3" key={index}>
-                  <small className="text-secondary">{techStack}</small>
-                </li>
-              );
+              return <Tag key={index}>{techStack}</Tag>;
             })}
           </ul>
           <ul className="flex gap-3 sm:justify-end">
