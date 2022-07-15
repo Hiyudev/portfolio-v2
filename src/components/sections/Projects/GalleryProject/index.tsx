@@ -11,7 +11,7 @@ function GalleryProject({ projectData }: IGalleryProjectProps) {
   const { t } = useTranslation("project");
 
   return (
-    <li className="border-secondary group relative overflow-hidden rounded-md border">
+    <li className="border-secondary group relative overflow-hidden rounded-md border shadow-lg dark:shadow-none">
       <Link passHref href={`/project/${projectData.slug}`}>
         <a
           aria-label={`${t("datailedProject.label.partOne")} ${

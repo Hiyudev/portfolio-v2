@@ -13,7 +13,7 @@ function DetailedProject({ projectData }: ProjectProps) {
   const { t } = useTranslation("project");
 
   return (
-    <Card className="z-10 grid grid-rows-2 gap-3 shadow-lg sm:gap-4 sm:p-4 md:grid-cols-2 md:grid-rows-1 md:gap-5 md:p-5 md:shadow-none">
+    <Card className="z-10 grid grid-rows-2 gap-3 shadow-lg sm:gap-4 sm:p-4 md:grid-cols-2 md:grid-rows-1 md:gap-5 md:p-5">
       <div className="relative">
         {projectData.projectThumbnail && (
           <Image
