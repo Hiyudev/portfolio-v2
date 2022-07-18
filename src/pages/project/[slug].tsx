@@ -30,6 +30,7 @@ const ProjectPage = ({ projectData }: ProjectPageProps) => {
           <div className="border-secondary relative mb-8 h-96 w-full overflow-hidden rounded-2xl border">
             {projectData.projectThumbnail && (
               <Image
+                objectFit="cover"
                 className="opacity-80 transition-transform hover:scale-105 hover:opacity-100"
                 layout="fill"
                 src={projectData.projectThumbnail?.url ?? ""}
