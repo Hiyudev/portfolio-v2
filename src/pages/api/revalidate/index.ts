@@ -43,7 +43,7 @@ const revalidateHandler = async (req: NextApiRequest, res: NextApiResponse<strin
 
     return res.send("Revalidation was a success")
   } catch (err) {
-    return res.status(500).send('Error revalidating')
+    return res.status(500).send(err.message);
   }
 };
 
