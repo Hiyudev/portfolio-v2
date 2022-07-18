@@ -117,7 +117,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
         "project",
         "blog",
       ])),
-    },
-    revalidate: 86400,
+    }
   };
 };
