@@ -20,31 +20,31 @@ function Footer() {
           {t("footer.description")}
         </p>
 
-        <div aria-labelledby="footer-socials">
-          <h2 className="sr-only" id="footer-socials">
+        <ul
+          aria-labelledby="footer-socials"
+          className="mt-4 flex items-center justify-center gap-6 md:gap-8"
+        >
+          <div aria-hidden className="sr-only" id="footer-socials">
             {t("footer.socialLinksSR")}
-          </h2>
-
-          <ul className="mt-4 flex items-center justify-center gap-6 md:gap-8">
-            {Object.entries(SocialList).map(([key, value], index) => {
-              return (
-                <li key={index}>
-                  <Link passHref href={value.link}>
-                    <a
-                      aria-label={`${key} link`}
-                      className="fancy-ring group flex flex-row items-center gap-2 rounded-md decoration-primary-500 hover:underline hover:underline-offset-2 focus:underline focus:ring-offset-background-100 dark:focus:ring-offset-background-900"
-                    >
-                      <div className="transition-colors group-hover:text-primary-500 group-focus:text-primary-500">
-                        {value.logo}
-                      </div>
-                      <span>{key}</span>
-                    </a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+          </div>
+          {Object.entries(SocialList).map(([key, value], index) => {
+            return (
+              <li key={index}>
+                <Link passHref href={value.link}>
+                  <a
+                    aria-label={`Kevin's ${key} page`}
+                    className="fancy-ring group flex flex-row items-center gap-2 rounded-md decoration-primary-500 hover:underline hover:underline-offset-2 focus:underline focus:ring-offset-background-100 dark:focus:ring-offset-background-900"
+                  >
+                    <div className="transition-colors group-hover:text-primary-500 group-focus:text-primary-500">
+                      {value.logo}
+                    </div>
+                    <span>{key}</span>
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
         <p className="sr-only">
           {t("footer.created")}
           {t("footer.love")}
