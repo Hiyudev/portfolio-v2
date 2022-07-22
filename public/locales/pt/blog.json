@@ -1,5 +1,7 @@
 {
   "blog": {
-    "readTime": "min de leitura"
+    "altDescribe": "Thumbnail do post {title}",
+    "readTime": "min de leitura",
+    "label": "Blog post com tíulo: {title}. {description}"
   }
 }
