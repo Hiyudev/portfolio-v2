@@ -10,11 +10,12 @@ function Footer() {
   return (
     <footer className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="space-y-4">
-        <Link passHref href={"/"}>
-          <a className="fancy-ring mx-auto flex h-8 w-8 items-center justify-center rounded-md focus:ring-offset-background-100 dark:focus:ring-offset-background-900">
-            <LogoIcon />
-          </a>
-        </Link>
+        <div
+          aria-hidden
+          className="fancy-ring mx-auto flex h-8 w-8 items-center justify-center rounded-md focus:ring-offset-background-100 dark:focus:ring-offset-background-900"
+        >
+          <LogoIcon />
+        </div>
 
         <p className="text-secondary mt-6 text-center leading-relaxed">
           {t("footer.description")}
