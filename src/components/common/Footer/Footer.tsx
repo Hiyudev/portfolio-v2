@@ -45,21 +45,27 @@ function Footer() {
             })}
           </ul>
         </div>
-        <p className="text-secondary mt-6 flex flex-row items-center justify-center gap-1 text-sm leading-relaxed">
+        <p className="sr-only">
+          {t("footer.created")}
+          {t("footer.love")}
+          {t("footer.and")}
+          {t("footer.code")}
+          {t("footer.by")}Kevin
+        </p>
+        <p
+          aria-hidden
+          className="text-secondary mt-6 flex flex-row items-center justify-center gap-1 text-sm leading-relaxed"
+        >
           {t("footer.created")}{" "}
           <Heart
             className="transition-colors hover:text-primary-500"
-            aria-hidden="true"
             weight="bold"
           />
-          <span className="sr-only">{t("footer.love")}</span>
           {t("footer.and")}{" "}
           <Code
             className="transition-colors hover:text-primary-500"
-            aria-hidden="true"
             weight="bold"
           />{" "}
-          <span className="sr-only">{t("footer.code")}</span>
           {t("footer.by")}{" "}
           <span className="transition-colors hover:text-primary-500">
             Kevin
