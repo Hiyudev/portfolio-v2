@@ -37,9 +37,9 @@ function DetailedProject({ projectData }: ProjectProps) {
           </div>
           <Link passHref href={`/project/${projectData.slug}`}>
             <a
-              aria-label={`${t("datailedProject.label.partOne")} ${
+              aria-label={`${t("detailedProject.label.partOne")} ${
                 projectData.title
-              } ${t("datailedProject.label.partTwo")}.`}
+              } ${t("detailedProject.label.partTwo")}`}
               className="fancy-ring fancy-ring-bg group mt-4 flex items-center gap-2 rounded-md"
             >
               <span className="group-hover:text-primary-500 group-focus:text-primary-500">
@@ -60,33 +60,35 @@ function DetailedProject({ projectData }: ProjectProps) {
               return <Tag key={index}>{techStack}</Tag>;
             })}
           </ul>
-          <ul className="flex gap-3 sm:justify-end">
-            {projectData.githubLink && (
-              <li>
-                <Link passHref href={projectData.githubLink}>
-                  <a
-                    aria-label="Github link"
-                    className="fancy-ring fancy-ring-bg group flex flex-row items-center gap-2 rounded-md decoration-primary-500 transition-colors hover:text-primary-500 hover:underline hover:underline-offset-2 focus:text-primary-500 focus:underline"
-                  >
-                    <GithubLogo size={24} />
-                  </a>
-                </Link>
-              </li>
-            )}
+          {(projectData.githubLink || projectData.projectLink) && (
+            <ul className="flex gap-3 sm:justify-end">
+              {projectData.githubLink && (
+                <li>
+                  <Link passHref href={projectData.githubLink}>
+                    <a
+                      aria-label={t("detailedProject.links.github")}
+                      className="fancy-ring fancy-ring-bg group flex flex-row items-center gap-2 rounded-md decoration-primary-500 transition-colors hover:text-primary-500 hover:underline hover:underline-offset-2 focus:text-primary-500 focus:underline"
+                    >
+                      <GithubLogo size={24} />
+                    </a>
+                  </Link>
+                </li>
+              )}
 
-            {projectData.projectLink && (
-              <li>
-                <Link passHref href={projectData.projectLink}>
-                  <a
-                    aria-label="Project home link"
-                    className="fancy-ring fancy-ring-bg group flex flex-row items-center gap-2 rounded-md decoration-primary-500 transition-colors hover:text-primary-500 hover:underline hover:underline-offset-2 focus:text-primary-500 focus:underline"
-                  >
-                    <ArrowSquareOut size={24} />
-                  </a>
-                </Link>
-              </li>
-            )}
-          </ul>
+              {projectData.projectLink && (
+                <li>
+                  <Link passHref href={projectData.projectLink}>
+                    <a
+                      aria-label={t("detailedProject.links.website")}
+                      className="fancy-ring fancy-ring-bg group flex flex-row items-center gap-2 rounded-md decoration-primary-500 transition-colors hover:text-primary-500 hover:underline hover:underline-offset-2 focus:text-primary-500 focus:underline"
+                    >
+                      <ArrowSquareOut size={24} />
+                    </a>
+                  </Link>
+                </li>
+              )}
+            </ul>
+          )}
         </div>
       </div>
     </Card>

@@ -42,13 +42,13 @@ function BlogPost({
 
   return (
     <Link passHref href={href}>
-      <a className="group outline-none">
+      <a aria-label={`\"${title}\" post`} className="group outline-none">
         <Card className="relative flex flex-col gap-3">
           <div className="fancy-gradient absolute inset-0.5 -z-10 opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75"></div>
           <div className="relative overflow-hidden rounded-md">
             {coverImageUrl && (
               <Image
-                alt={`${title} blog post thumbnail`}
+                alt={t("blog.altDescribe").replace("{title}", title)}
                 objectFit="cover"
                 height={600}
                 width={1400}
@@ -62,14 +62,22 @@ function BlogPost({
               <p>{description}</p>
             </div>
             <p className="text-secondary flex flex-row gap-2 text-sm">
-              <span>
+              <span className="sr-only">
+                {formatDistance(new Date(timePublished), new Date(), {
+                  addSuffix: true,
+                  locale: datefnsLocale,
+                })}
+                {getReadingTime(text)}
+                {t("blog.readTime")}
+              </span>
+              <span aria-hidden>
                 {formatDistance(new Date(timePublished), new Date(), {
                   addSuffix: true,
                   locale: datefnsLocale,
                 })}
               </span>
-              <span>•</span>
-              <span>
+              <span aria-hidden>•</span>
+              <span aria-hidden>
                 {getReadingTime(text)} {t("blog.readTime")}
               </span>
             </p>

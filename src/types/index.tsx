@@ -9,11 +9,11 @@ import {
 
 export const SocialList = {
   Twitter: {
-    logo: <TwitterLogo aria-label="Twitter logo" weight={"bold"} />,
+    logo: <TwitterLogo aria-hidden weight={"bold"} />,
     link: "/social/twitter",
   },
   Github: {
-    logo: <GithubLogo aria-label="Github logo" weight={"bold"} />,
+    logo: <GithubLogo aria-hidden weight={"bold"} />,
     link: "/social/github",
   },
 };
