@@ -1,6 +1,6 @@
 const LogoIcon = (props) => (
   <svg
-    aria-labelledby="kevin"
+    aria-labelledby="Kevin's logo"
     width={16}
     height={16}
     viewBox="0 0 16 16"
@@ -8,7 +8,7 @@ const LogoIcon = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <title>Kevin logo</title>
+    <title>Kevin&apos;s logo</title>
     <path
       d="M8.9375 0L3.72396 5.22083V0H0V14.9167L11.9167 2.98333V0H8.9375Z"
       fill="currentColor"

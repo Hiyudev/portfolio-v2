@@ -8,8 +8,10 @@ const BigLogoIcon = (props: SVGProps<SVGSVGElement>) => (
     viewBox="0 0 192 192"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    aria-labelledby="Kevin's logo"
     {...props}
   >
+    <title>Kevin&apos;s logo</title>
     <path
       d="M107.25 0L71.5 35.8L44.6875 62.65V0H0V107.4V179L71.5 107.4L143 35.8V0H107.25Z"
       fill="#DB2777"
