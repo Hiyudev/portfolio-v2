@@ -5,6 +5,10 @@
     "label": {
       "partOne": "Learn more about the",
       "partTwo": "project"
+    },
+    "links": {
+      "github": "Access project github repository page",
+      "website": "Access project website page"
     }
   },
   "galleryProject": {
