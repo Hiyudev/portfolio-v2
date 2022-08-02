@@ -55,5 +55,6 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       ProjectsData,
       ...(await serverSideTranslations(locale, ["common", "home", "project"])),
     },
+    revalidate: 43200,
   };
 };
