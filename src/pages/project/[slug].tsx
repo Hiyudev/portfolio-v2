@@ -10,6 +10,8 @@ import { useTranslation } from "next-i18next";
 import { initGraphClient } from "../../lib/client";
 import dynamic from "next/dynamic";
 import Tag from "../../components/common/Tag";
+import Link from "next/link";
+import { GithubLogo, ArrowSquareOut } from "phosphor-react";
 
 const Footer = dynamic(() => import("../../components/common/Footer"));
 const Layout = dynamic(() => import("../../components/layout"));
@@ -62,6 +64,45 @@ const ProjectPage = ({ projectData }: ProjectPageProps) => {
               __html: projectData.content.html,
             }}
           ></article>
+
+          <ul className="mt-8 flex items-center justify-center gap-4">
+            {projectData.githubLink && (
+              <li className="border-secondary relative h-full rounded-md border shadow-lg dark:shadow-none">
+                <Link passHref href={projectData.githubLink} target="_blank">
+                  <a
+                    aria-label={t("projectLinks.github").replaceAll(
+                      "{project}",
+                      projectData.title
+                    )}
+                    className="bg-primary group flex h-full flex-row items-center gap-2 rounded-md p-4 decoration-primary-500 focus:outline-none"
+                  >
+                    <div className="fancy-gradient absolute inset-0.5 -z-10 opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
+                    <div className="transition-colors group-hover:text-primary-500 group-focus:text-primary-500">
+                      <GithubLogo />
+                    </div>
+                  </a>
+                </Link>
+              </li>
+            )}
+            {projectData.projectLink && (
+              <li className="border-secondary relative h-full rounded-md border shadow-lg dark:shadow-none">
+                <Link passHref href={projectData.projectLink} target="_blank">
+                  <a
+                    aria-label={t("projectLinks.website").replaceAll(
+                      "{project}",
+                      projectData.title
+                    )}
+                    className="bg-primary group flex h-full flex-row items-center gap-2 rounded-md p-4 decoration-primary-500 focus:outline-none"
+                  >
+                    <div className="fancy-gradient absolute inset-0.5 -z-10 opacity-0 blur transition-opacity group-hover:opacity-75 group-focus:opacity-75" />
+                    <div className="transition-colors group-hover:text-primary-500 group-focus:text-primary-500">
+                      <ArrowSquareOut />
+                    </div>
+                  </a>
+                </Link>
+              </li>
+            )}
+          </ul>
         </Layout>
       </section>
       <Footer />

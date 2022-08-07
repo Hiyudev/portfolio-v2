@@ -13,5 +13,9 @@
   },
   "galleryProject": {
     "viewLabel": "View project"
+  },
+  "projectLinks": {
+    "github": "Access {project} github repository page",
+    "website": "Access {project} website page"
   }
 }
