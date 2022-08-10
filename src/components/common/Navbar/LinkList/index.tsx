@@ -14,7 +14,7 @@ function LinkList() {
           <Link href={value.link} passHref>
             <a
               aria-label={value.label.description}
-              className="fancy-ring fancy-ring-bg-secondary md:fancy-ring-bg group flex flex-row items-center gap-2 rounded-sm decoration-primary-500 hover:underline hover:underline-offset-2 focus:underline"
+              className="fancy-ring fancy-ring-bg-secondary md:fancy-ring-bg md:fancy-ring-bg group flex flex-row items-center gap-2 rounded-sm decoration-primary-500 hover:underline hover:underline-offset-2 focus:underline"
             >
               <div className="group-hover:text-primary-500 group-hover:transition-colors group-focus:text-primary-500">
                 {value.image.source}
