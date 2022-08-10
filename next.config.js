@@ -13,7 +13,7 @@ module.exports = {
         permanent: true,
       },
       {
-        source: "/:locale/social/:name",
+        source: "/social/:name",
         destination: "/api/social/:name",
         permanent: true,
         locale: false,
